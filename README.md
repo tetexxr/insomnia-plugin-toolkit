@@ -33,7 +33,7 @@ After building, copy the plugin folder into Insomnia's plugins directory:
 
 ```bash
 # macOS example
-cp -r insomnia-plugin ~/Library/Application\ Support/Insomnia/plugins/insomnia-toolkit
+cp -r insomnia-toolkit ~/Library/Application\ Support/Insomnia/plugins/insomnia-toolkit
 ```
 
 ### Option 2: Link for development
