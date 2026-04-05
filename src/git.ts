@@ -1,7 +1,7 @@
 import { exec } from 'child_process'
 import { homedir } from 'os'
 import { promisify } from 'util'
-import type { InsomniaContext } from './types.js'
+import type { InsomniaContext } from './types'
 
 const execAsync = promisify(exec)
 export const STORE_KEY_REPO_PATH = 'git_repo_path'

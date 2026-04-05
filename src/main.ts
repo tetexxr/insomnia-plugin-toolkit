@@ -1,6 +1,6 @@
 import { homedir } from 'os'
-import type { InsomniaContext } from './types.js'
-import { runGitCommand, STORE_KEY_REPO_PATH } from './git.js'
+import type { InsomniaContext } from './types'
+import { runGitCommand, STORE_KEY_REPO_PATH } from './git'
 
 export const workspaceActions = [
   {
