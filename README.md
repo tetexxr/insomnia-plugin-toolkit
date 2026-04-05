@@ -21,9 +21,7 @@ During development you can use `npm run dev` to watch for changes and recompile 
 
 ## Installation
 
-### Option 1: Copy to the plugins directory
-
-After building, copy the plugin folder into Insomnia's plugins directory:
+Copy the plugin folder into Insomnia's plugins directory:
 
 | Platform | Path |
 |----------|------|
@@ -35,10 +33,6 @@ After building, copy the plugin folder into Insomnia's plugins directory:
 # macOS example
 cp -r insomnia-toolkit ~/Library/Application\ Support/Insomnia/plugins/insomnia-toolkit
 ```
-
-### Option 2: Link for development
-
-In Insomnia, go to **Preferences > Plugins** and set the **Additional Plugin Path** to the parent directory containing this plugin folder. This way Insomnia will pick it up automatically and you can edit the source without reinstalling.
 
 After installing, restart Insomnia or reload plugins from **Preferences > Plugins**.
 
@@ -65,7 +59,3 @@ Opens a prompt to view or change the configured repository path.
 
 - **Git** must be installed and available in your system's `PATH`.
 - The configured directory must be an existing git repository with a remote configured.
-
-## License
-
-MIT
