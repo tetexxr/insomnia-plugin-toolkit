@@ -7,7 +7,7 @@ module.exports.workspaceActions = [
     icon: 'fa-code-branch',
     action: async (context: InsomniaContext) => {
       await runGitCommand(context, 'git pull --rebase')
-    },
+    }
   },
   {
     label: 'Git - Configure directory',
@@ -19,13 +19,13 @@ module.exports.workspaceActions = [
         label: 'Git repository directory (absolute path)',
         defaultValue: current,
         submitName: 'Save',
-        cancelable: true,
+        cancelable: true
       })
 
       if (newPath != null) {
         await context.store.setItem(STORE_KEY_REPO_PATH, newPath)
         await context.app.alert('Configuration saved', `Directory: ${newPath}`)
       }
-    },
-  },
+    }
+  }
 ]

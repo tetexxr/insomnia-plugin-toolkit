@@ -3,11 +3,11 @@ import type { InsomniaContext } from '../src/types'
 import { STORE_KEY_REPO_PATH } from '../src/git'
 
 const { mockExec } = vi.hoisted(() => ({
-  mockExec: vi.fn(),
+  mockExec: vi.fn()
 }))
 
 vi.mock('child_process', () => ({
-  exec: mockExec,
+  exec: mockExec
 }))
 
 function createMockContext(overrides?: { storedPath?: string | null; promptResult?: string | null }): InsomniaContext {
@@ -22,12 +22,12 @@ function createMockContext(overrides?: { storedPath?: string | null; promptResul
       setItem: vi.fn((key: string, value: string) => {
         store.set(key, value)
         return Promise.resolve()
-      }),
+      })
     },
     app: {
       alert: vi.fn(() => Promise.resolve()),
-      prompt: vi.fn(() => Promise.resolve(overrides?.promptResult ?? null)),
-    },
+      prompt: vi.fn(() => Promise.resolve(overrides?.promptResult ?? null))
+    }
   }
 }
 

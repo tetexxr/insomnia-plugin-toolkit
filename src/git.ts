@@ -13,7 +13,7 @@ export async function getRepoPath(context: InsomniaContext): Promise<string | nu
     label: 'Git repository directory (absolute path)',
     defaultValue: '',
     submitName: 'Save and run',
-    cancelable: true,
+    cancelable: true
   })
 
   if (!path) return null

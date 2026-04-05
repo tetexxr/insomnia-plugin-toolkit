@@ -12,7 +12,7 @@ export interface InsomniaApp {
       defaultValue: string
       submitName: string
       cancelable: boolean
-    },
+    }
   ): Promise<string | null>
 }
 
