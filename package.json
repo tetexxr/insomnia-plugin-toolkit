@@ -1,0 +1,19 @@
+{
+  "name": "insomnia-toolkit",
+  "version": "1.0.0",
+  "main": "dist/main.js",
+  "description": "Git toolkit for Insomnia with configurable repository directory",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "insomnia": {
+    "name": "insomnia-toolkit",
+    "displayName": "Insomnia Toolkit",
+    "description": "Run git commands directly from Insomnia with a configurable repository directory"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.2",
+    "typescript": "^5.4.0"
+  }
+}
