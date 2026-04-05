@@ -1,5 +1,5 @@
 {
-  "name": "insomnia-toolkit",
+  "name": "insomnia-plugin-toolkit",
   "version": "1.0.0",
   "main": "dist/main.js",
   "description": "Git toolkit for Insomnia with configurable repository directory",
@@ -9,7 +9,7 @@
     "test": "vitest run --dir test"
   },
   "insomnia": {
-    "name": "insomnia-toolkit",
+    "name": "insomnia-plugin-toolkit",
     "displayName": "Insomnia Toolkit",
     "description": "Run git commands directly from Insomnia with a configurable repository directory"
   },

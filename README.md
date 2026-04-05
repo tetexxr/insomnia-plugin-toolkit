@@ -31,7 +31,7 @@ Copy the plugin folder into Insomnia's plugins directory:
 
 ```bash
 # macOS example
-cp -r insomnia-toolkit ~/Library/Application\ Support/Insomnia/plugins/insomnia-toolkit
+cp -r insomnia-plugin-toolkit ~/Library/Application\ Support/Insomnia/plugins/insomnia-plugin-toolkit
 ```
 
 After installing, restart Insomnia or reload plugins from **Preferences > Plugins**.
