@@ -1,6 +1,7 @@
 import { exec } from 'child_process'
+import { homedir } from 'os'
 import { promisify } from 'util'
-import type { InsomniaContext } from './types'
+import type { InsomniaContext } from './types.js'
 
 const execAsync = promisify(exec)
 export const STORE_KEY_REPO_PATH = 'git_repo_path'
@@ -11,7 +12,7 @@ export async function getRepoPath(context: InsomniaContext): Promise<string | nu
 
   const path = await context.app.prompt('Git Pull Rebase', {
     label: 'Git repository directory (absolute path)',
-    defaultValue: '',
+    defaultValue: homedir(),
     submitName: 'Save and run',
     cancelable: true
   })

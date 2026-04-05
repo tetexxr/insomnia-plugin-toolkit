@@ -1,7 +1,8 @@
-import type { InsomniaContext } from './types'
-import { runGitCommand, STORE_KEY_REPO_PATH } from './git'
+import { homedir } from 'os'
+import type { InsomniaContext } from './types.js'
+import { runGitCommand, STORE_KEY_REPO_PATH } from './git.js'
 
-module.exports.workspaceActions = [
+export const workspaceActions = [
   {
     label: 'Git Pull Rebase',
     icon: 'fa-code-branch',
@@ -13,7 +14,7 @@ module.exports.workspaceActions = [
     label: 'Git - Configure directory',
     icon: 'fa-cog',
     action: async (context: InsomniaContext) => {
-      const current = (await context.store.getItem(STORE_KEY_REPO_PATH)) || ''
+      const current = (await context.store.getItem(STORE_KEY_REPO_PATH)) || homedir()
 
       const newPath = await context.app.prompt('Configure Git directory', {
         label: 'Git repository directory (absolute path)',
