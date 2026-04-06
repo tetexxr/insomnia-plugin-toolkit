@@ -1,6 +1,5 @@
-import { homedir } from 'os'
 import type { InsomniaContext } from './types'
-import { runGitCommand, STORE_KEY_REPO_PATH } from './git'
+import { runGitCommand, getSelectedRepo, STORE_KEY_REPO } from './git'
 
 export const workspaceActions = [
   {
@@ -11,21 +10,13 @@ export const workspaceActions = [
     }
   },
   {
-    label: 'Git - Configure directory',
+    label: 'Git - Select repository',
     icon: 'fa-cog',
     action: async (context: InsomniaContext) => {
-      const current = (await context.store.getItem(STORE_KEY_REPO_PATH)) || homedir()
-
-      const newPath = await context.app.prompt('Configure Git directory', {
-        label: 'Git repository directory (absolute path)',
-        defaultValue: current,
-        submitName: 'Save',
-        cancelable: true
-      })
-
-      if (newPath != null) {
-        await context.store.setItem(STORE_KEY_REPO_PATH, newPath)
-        await context.app.alert('Configuration saved', `Directory: ${newPath}`)
+      await context.store.setItem(STORE_KEY_REPO, '')
+      const repo = await getSelectedRepo(context)
+      if (repo) {
+        await context.app.alert('Repository selected', `${repo.branch} @ ${repo.remote}`)
       }
     }
   }

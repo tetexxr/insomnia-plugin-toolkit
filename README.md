@@ -1,16 +1,17 @@
 # Insomnia Toolkit
 
-An [Insomnia](https://insomnia.rest/) plugin that lets you run `git pull --rebase` directly from the app, with a configurable repository directory.
+An [Insomnia](https://insomnia.rest/) plugin that adds advanced git commands to Insomnia's Git Sync feature. It auto-discovers the repositories managed by Insomnia and lets you run operations like `git pull --rebase` directly from the app.
 
 ## Features
 
-- **Git Pull Rebase** -- Run `git pull --rebase` on a configured directory with one click.
-- **Configurable directory** -- Set the path to your git repository. The path is persisted across sessions using Insomnia's plugin storage.
+- **Auto-discovery** -- Automatically finds Git Sync repositories in Insomnia's data directory.
+- **Git Pull Rebase** -- Run `git pull --rebase` on the Insomnia repo with one click.
+- **Repository selector** -- Choose which repo to operate on when multiple exist.
 - **Visual feedback** -- Displays success or error messages in native Insomnia dialogs.
 
 ## Development
 
-The plugin is written in TypeScript. Install dependencies and compile before installing:
+The plugin is written in TypeScript. Install dependencies and compile:
 
 ```bash
 npm install --ignore-scripts
@@ -21,19 +22,22 @@ During development you can use `npm run dev` to watch for changes and recompile 
 
 ## Installation
 
-Copy the plugin folder into Insomnia's plugins directory:
+Build the plugin and copy the necessary files into Insomnia's plugins directory:
 
-| Platform | Path |
-|----------|------|
+| Platform | Plugins path |
+|----------|-------------|
 | macOS    | `~/Library/Application Support/Insomnia/plugins/` |
 | Windows  | `%APPDATA%\Insomnia\plugins\` |
 | Linux    | `~/.config/Insomnia/plugins/` |
 
 ```bash
-# macOS example (run from the plugin directory)
-mkdir -p ~/Library/Application\ Support/Insomnia/plugins
-rm -rf ~/Library/Application\ Support/Insomnia/plugins/insomnia-plugin-toolkit
-cp -r . ~/Library/Application\ Support/Insomnia/plugins/insomnia-plugin-toolkit
+npm run build
+
+# macOS
+PLUGIN_DIR=~/Library/Application\ Support/Insomnia/plugins/insomnia-plugin-toolkit
+rm -rf "$PLUGIN_DIR"
+mkdir -p "$PLUGIN_DIR"
+cp -r dist package.json node_modules "$PLUGIN_DIR"
 ```
 
 After installing, restart Insomnia or reload plugins from **Preferences > Plugins**.
@@ -44,20 +48,25 @@ The plugin adds two **workspace actions**. To access them, open the workspace dr
 
 ### Git Pull Rebase
 
-Runs `git pull --rebase` on the configured repository directory.
+Runs `git pull --rebase` on the selected Insomnia Git Sync repository.
 
-- On first use, a prompt will ask for the **absolute path** to your git repository.
-- The path is saved automatically and reused for future runs.
-- A dialog will show the command output on success, or the error message on failure.
+### Git - Select repository
 
-### Git - Configure Directory
+Lets you choose which Git Sync repository to operate on. The selection is persisted across sessions. If only one repository exists, it is selected automatically.
 
-Opens a prompt to view or change the configured repository path.
+## Where does Insomnia store its Git Sync repositories?
 
-- The current path is shown as the default value.
-- Enter a new absolute path and click **Save** to update it.
+Insomnia keeps a local clone for each Git Sync workspace inside its data directory:
+
+| Platform | Path |
+|----------|------|
+| macOS    | `~/Library/Application Support/Insomnia/version-control/git/` |
+| Windows  | `%APPDATA%\Insomnia\version-control\git\` |
+| Linux    | `~/.config/Insomnia/version-control/git/` |
+
+Each repository is stored in a subdirectory named `git_<uuid>/`.
 
 ## Requirements
 
 - **Git** must be installed and available in your system's `PATH`.
-- The configured directory must be an existing git repository with a remote configured.
+- At least one workspace must be configured with **Git Sync** in Insomnia.

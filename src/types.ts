@@ -9,7 +9,7 @@ export interface InsomniaApp {
     title: string,
     options: {
       label: string
-      defaultValue: string
+      defaultValue?: string
       submitName: string
       cancelable: boolean
     }
